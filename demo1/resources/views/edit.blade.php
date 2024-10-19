@@ -35,7 +35,7 @@
                 <input type="password" class="form-control" value="{{$Std->pass}}" id="pass" name="pass" required>
             </div>
 
-            <label> 
+            <label>
                 <input type="radio" name="gender" value="Male" {{ $Std->gender === 'Male' ? 'checked' : '' }} required>
                 Male
             </label>
@@ -51,13 +51,17 @@
 
             <label for="course">Select Course:</label>
             <select name="course" id="course" required>
-                <option value="{{$Std->course}}">--Please choose an option--</option>
-                <option value="Web Development">Web Development</option>
-                <option value="Mobile Application">Mobile Application</option>
-                <option value="Python">Python</option>
-                <option value="React js">React js</option>
+                <option value="" disabled {{ is_null($Std->course) ? 'selected' : '' }}>--Please choose an option--
+                </option>
+                <option value="Web Development" {{ $Std->course === 'Web Development' ? 'selected' : '' }}>Web Development
+                </option>
+                <option value="Mobile Application" {{ $Std->course === 'Mobile Application' ? 'selected' : '' }}>Mobile
+                    Application</option>
+                <option value="Python" {{ $Std->course === 'Python' ? 'selected' : '' }}>Python</option>
+                <option value="React js" {{ $Std->course === 'React js' ? 'selected' : '' }}>React js</option>
                 <!-- Add more courses as needed -->
             </select>
+
 
             <br><br> <!-- Add some space before the submit button -->
 
