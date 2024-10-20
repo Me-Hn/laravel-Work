@@ -7,6 +7,13 @@
     <title>Bootstrap Table Example</title>
     <!-- Bootstrap CSS Link -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+
+<style>
+th{
+    text-align: center;
+}
+</style>
 </head>
 
 <body>
@@ -40,6 +47,7 @@
 
                         <td>
                             <a href="{{url('editdata/' . $Std->id)}}" class="btn btn-info">Edit</a>
+                            |
                             <a href="{{url('deletedata/' . $Std->id)}}"
                                 onclick="return confirm('Are you sure you want to delete this record?');"
                                 class="btn btn-danger">Delete</a>
