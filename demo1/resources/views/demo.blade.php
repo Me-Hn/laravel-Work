@@ -7,12 +7,28 @@
     <title>Bootstrap Form</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+
+.card{
+    height: 300px;
+    width: 300px;
+    border: none;
+}
+
+.card img{
+    height: 300px;
+    width: 300px;
+    background-color: silver; 
+    border-radius: 50%;
+}
+    </style>
+
 </head>
 
 <body>
     <div class="container mt-5">
         <h2 class="mb-4">Insert Data into demo1</h2>
-        <form action="{{ url('add') }}" method="POST">
+        <form action="{{ url('add') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
@@ -59,8 +75,17 @@
 
             <br><br> <!-- Add some space before the submit button -->
 
+            <!-- <label for="course">Add Your Image :</label>
+            <input type="file" name="Image"> -->
+           
+                <h1>Image Uploaded</h1>
+                <div class="card">
+                    <img src="profile.png" alt="" id="profile-pic">
+                </div>
+                <input type="file" id="imageUplode" accept="image/*" name="Image">
 
-            <button type="submit" value="submit" class="btn btn-primary">Submit</button>
+            <br><br>
+            <button type="submit" value="submit" id="submit" class="btn btn-primary">Submit</button>
             <a href="plays" value="submit" class="btn btn-primary">VIEW DATA</a>
 
         </form>
@@ -71,3 +96,19 @@
 </body>
 
 </html>
+<script>
+    const a = document.getElementById('profile-pic');
+    const b = document.getElementById('imageUplode');
+ 
+    b.onchange = function() {
+        a.src = URL.createObjectURL(b.files[0]);
+    }
+
+    let submit = document.getElementById('submit');
+
+    if(submit){
+        alert('data submited');
+    }else{
+        alert('data NOT submited');
+    }
+ </script>

@@ -27,3 +27,4 @@ Route::get('deletedata/{id}', [second_controller::class, 'destroy']);
 // FOR UPDAE
 Route::post('editdata/{id}', [second_controller::class, 'update']);
 // FOR UPDAE
+

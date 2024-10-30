@@ -13,7 +13,7 @@ class second_controller extends Controller
      */
     public function index()
     {
-        $plays = Mymodel::all(); 
+        $plays = Mymodel::all();
 
         // Return the data to a view or as JSON (depending on what you need)
         return view('index', compact('plays'));
@@ -31,18 +31,25 @@ class second_controller extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $student = new Mymodel();
-        $student->name = $request->input("name");
-        $student->f_name = $request->input("f_name");
-        $student->email = $request->input("email");
-        $student->std_id = $request->input("std_id");
-        $student->pass = $request->input("pass");
-        $student->gender = $request->input("gender");
-        $student->course = $request->input("course");
-        $student->save();
-        return redirect()->back()->with("status.ok");
-    }
+{
+    
+    // Save the data in the database
+    $student = new Mymodel();
+    $student->name = $request->input("name");
+    $student->f_name = $request->input("f_name");
+    $student->email = $request->input("email");
+    $student->std_id = $request->input("std_id");
+    $student->pass = $request->input("pass");
+    $student->gender = $request->input("gender");
+    $student->course = $request->input("course");
+    $student->Image = $request->file("Image")->getClientOriginalName();
+    $request->file("Image")->move('uplodes',$student->Image);
+
+    $student->save();
+
+    return redirect()->back()->with("status", "Student record created successfully!");
+}
+
 
     /**
      * Display the specified resource.
@@ -76,6 +83,8 @@ class second_controller extends Controller
         $student->pass = $request->input('pass');
         $student->gender = $request->input("gender");
         $student->course = $request->input("course");
+        $student->Image = $request->file("Image")->getClientOriginalName();
+        $request->file("Image")->move('uplodes',$student->Image);
         $student->save();
         return redirect('plays');
     }

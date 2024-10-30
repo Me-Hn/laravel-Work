@@ -8,6 +8,6 @@ class Mymodel extends Model
 {
     protected $table = "playbox";
     protected $fillable = [
-        "name","f_name","email","std_id","pass","gender","course"
+        "name","f_name","email","std_id","pass","gender","course","Image"
     ];
 }
